@@ -34,7 +34,7 @@ function generateMarkdown(data) {
   ${data.usage}
 
   ## License
-  ${data.license} 
+  [${data.license}](https://choosealicense.com/licenses/${data.license}/) 
 
   ## Contributing
   ${data.contributing}
@@ -43,7 +43,9 @@ function generateMarkdown(data) {
   ${data.tests}
 
   ## Questions
-  ${data.questions}
+  If you have any questions please contact me by:
+  - Github: [${data.github}](https://github.com/${data.github})
+  - Email: ${data.email}
   `;
 }
 
