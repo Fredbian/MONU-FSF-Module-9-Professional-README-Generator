@@ -44,10 +44,12 @@ function generateMarkdown(data) {
 
   ## Questions
   ${data.questions}
-
   `;
 }
 
-module.exports = generateMarkdown;
+module.exports = {
+  generateMarkdown
+}
 
+// for testing
 console.log(module)
