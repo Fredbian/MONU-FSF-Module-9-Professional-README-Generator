@@ -27,4 +27,4 @@ testemail@hotmail.com
 
 ## URL
 - Github: https://github.com/Fredbian/MONU-FSF-Module-9-Professional-README-Generator
-- Walkthrough Video:  
+- Walkthrough Video:  https://drive.google.com/file/d/1-vROSam94JVeAT-Kk-6BsZqp0_ojeqF0/view

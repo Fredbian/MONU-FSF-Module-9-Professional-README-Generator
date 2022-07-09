@@ -40,13 +40,13 @@ This application is covered under the following license:
 
   ## Tests
 
-  No test for this app.
+  No test for this app
 
   ## Questions
 
   If you have any questions please contact me by:
   - Github: [Fredbian](https://github.com/Fredbian)
-  - Email: testemail@gmail.com
+  - Email: testeail@gmail.com
 
   ## URL
 
