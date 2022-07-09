@@ -61,7 +61,12 @@ const questions = [
         type: 'input',
         name: 'email',
         message: 'Please enter your email:'
-    },    
+    }, 
+    {
+        type: 'input',
+        name: 'url',
+        message: 'Please provide the URL of your project.'
+    }   
 ];
 
 // // for testing
