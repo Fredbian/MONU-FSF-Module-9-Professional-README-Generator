@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
-const fs = require('fs')
-const markdown = require('./utils/generateMarkdown.js');
+const fs = require('fs/promises')
+const markdown = require('./utils/generateMarkdown.js')
+
 
 
 // TODO: Create an array of questions for user input
@@ -35,7 +36,7 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'What is the license?',
-        choices: ['Apache-2.0', 'GPLv3', 'MIT', 'BSD 3', 'No License']        
+        choices: ['Apache-2.0', 'GPL-3.0', 'MIT', 'LGPL-3.0', 'No License']        
     },
     // contribution guidelines
     {
@@ -60,42 +61,32 @@ const questions = [
         type: 'input',
         name: 'email',
         message: 'Please enter your email:'
-    },
-    
+    },    
 ];
 
-// for testing
-inquirer.prompt(questions)
-        .then(data => {
-            console.log(data)
-            return data
-        })
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//     fs.writeFile('../README.md', data, err => {
-//         if (err) {
-//             return console.log(`File writing failure! ${err.message}`)
-//         } else {
-//             console.log(`File writing success!`)
-//         }
-//     })
-
-// }
-
-// // // TODO: Create a function to initialize app
-// function init() {
-//     inquirer.prompt(questions)
+// // for testing
+// inquirer.prompt(questions)
 //         .then(data => {
 //             console.log(data)
 //             return data
 //         })
-// }
 
-// // Function call to initialize app
-// init()
-//     .then(answers => markdown(answers))
-//     .then(generatedReadme => writeToFile('../README.md', generatedReadme))
-//     .catch(err => {
-//         console.log(err);
-//     });
+
+// TODO: Create a function to initialize app
+function init() {
+    // for testing
+    // console.log('aaa')
+    return inquirer.prompt(questions)
+        .then(data => {
+            // console.log(data)
+            return data
+        })
+}
+
+// Function call to initialize app
+init()
+    .then(data => markdown(data))
+    .then((data) => fs.writeFile(__dirname + '/generated.md', data, 'utf-8'))
+    .catch(err => {
+        console.log(`ERROR! ${err.message}`)
+    })

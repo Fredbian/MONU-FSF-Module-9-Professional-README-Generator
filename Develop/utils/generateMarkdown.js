@@ -1,24 +1,50 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) { }
+function renderLicenseBadge(license) {
+  if (license !== 'No License') {
+    license = encodeURIComponent(license.replace('-', ' '))
+    return `![License: ${license}](https://img.shields.io/badge/License-${license}-blueviolet)`
+  } else {
+    return ''
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) { }
+function renderLicenseLink(license) {
+  if (license !== 'No License') {
+    let licenseURL = license.toLowerCase()
+    return `[${license}](https://choosealicense.com/licenses/${licenseURL}/)`
+  } else {
+    return ''
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) { }
+function renderLicenseSection(license) {
+  if (license !== 'No License') {
+    return `
+## License
+
+This application is covered under the following license: 
+
+${renderLicenseLink(license)}
+    `
+  } else {
+    return ''
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
-  # <${data.title}>
+  # ${data.title}
 
-  ## Descripution
-  ${data.description}
-
+  ${renderLicenseBadge(data.license)}
+  
   ## Table of Contents
+
   - [Descripution](#description)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -26,6 +52,9 @@ function generateMarkdown(data) {
   - [Contributing](#contributing)
   - [Tests](#tests)   
   - [Questions](#questions)
+  
+  ## Descripution
+  ${data.description}
 
   ## Installation
   ${data.installation}
@@ -33,8 +62,7 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
 
-  ## License
-  [${data.license}](https://choosealicense.com/licenses/${data.license}/) 
+  ${renderLicenseSection(data.license)}
 
   ## Contributing
   ${data.contributing}
@@ -46,12 +74,11 @@ function generateMarkdown(data) {
   If you have any questions please contact me by:
   - Github: [${data.github}](https://github.com/${data.github})
   - Email: ${data.email}
-  `;
+  `
 }
 
-module.exports = {
-  generateMarkdown
-}
+module.exports = generateMarkdown
+
 
 // for testing
-console.log(module)
+// console.log(module)
